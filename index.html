@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fraction Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+  <h1>Fraction Calculator</h1>
+  <div class="grid-item">
+    <div id="first-group">
+      <input type="text" class="numerator" value="2" placeholder="num">
+      <h1>----</h1>
+      <input type="text" class="denomenator" value="4" placeholder="denom">
+    </div>
+    <select id="operator">
+      <option value="+">+</option>
+      <option value="-">-</option>
+      <option value="*">*</option>
+      <option value="/">/</option>
+    </select>
+    <div id="second-group">
+      <input type="text" class="numerator" value="3" placeholder="num">
+      <h1>----</h1>
+      <input type="text" class="denomenator" value="6" placeholder="denom">
+    </div>
+    <button id="cal-btn">Calculate</button>
+  </div>
+  <h1 id="result">Result: </h1>
+  <script src="app.js"></script>
+</body>
+</html>

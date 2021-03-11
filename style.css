@@ -1,0 +1,16 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.grid-item {
+  margin: auto;
+  text-align: center;
+  display: grid;
+  grid-template-columns: 3fr 1fr 3fr;
+}
+
+select {
+  font-size: 2rem;
+}
+

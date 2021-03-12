@@ -14,3 +14,17 @@ select {
   font-size: 2rem;
 }
 
+#fraction-figure {display: flex;}
+#fraction-figure .denom-box {
+  background-color: transparent; 
+  height: 20px;
+  width: 20px;
+  border: 1px solid #000;
+}
+
+#fraction-figure .numerator-box {
+  height: 20px;
+  width: 20px;
+  border: 1px solid #000;
+  background-color: #f4f4;
+}

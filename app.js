@@ -2,18 +2,19 @@ let inputNmr = document.querySelectorAll('.numerator');
 
 let inputDenom = document.querySelectorAll('.denomenator');
 
-let inputs = document.querySelectorAll('input');
+let inputs = document.querySelectorAll('.fraction input');
 
 let operator = document.querySelector('#operator'); 
 
 let calBtn = document.querySelector('#cal-btn');
 
-let result = document.querySelector("#result");
+let resultInputNmr = document.querySelector(".fraction-result .numerator");
+let resultInputDenom = document.querySelector(".fraction-result .denomenator");
+let resultInputWholeNum = document.querySelector(".fraction-result .wholeNumber");
 
 let fractionFigure = document.querySelector("#fraction-figure");
 
-
-let denomenatorResult, numeratorResult;
+let denomenatorResult, numeratorResult, wholeNumResult;
 
 calBtn.addEventListener('click', ()=> {
   let box = document.querySelectorAll("#fraction-figure div");
@@ -53,17 +54,22 @@ calBtn.addEventListener('click', ()=> {
         simplify();
         break;
     }
-    // if(numeratorResult == 0) {
-    //   result.innerHTML = 0;
-    //   return;
-    // }
+    if(numeratorResult == 0) {
+      console.log("object");
+      resultInputNmr.value = 0;
+      resultInputDenom.value = "";
+    }
 
-    // else if(numeratorResult == denomenatorResult) {
-    //   result.innerHTML = denomenatorResult;
-    //   return;
-    // }
+    else if(numeratorResult == denomenatorResult) {
+      resultInputNmr.value = denomenatorResult;
+      resultInputDenom.value = "";
+    }
     
-    result.innerHTML = `Result: <br> ${numeratorResult}<br> ---- <br>${denomenatorResult}`;
+    else {
+      resultInputNmr.value = numeratorResult;
+      resultInputDenom.value = denomenatorResult;
+      resultInputWholeNum.value = wholeNumResult;
+    }
     
     box.forEach(element => {
       element.parentNode.removeChild(element); // to reset the figure
@@ -95,6 +101,11 @@ function simplify() {
         if(denomenatorResult % biggerNum == 0 && numeratorResult % biggerNum == 0) {
           numeratorResult/= biggerNum;
           denomenatorResult/= biggerNum;
+          if(denomenatorResult < numeratorResult) {
+            wholeNumResult = parseInt(numeratorResult / denomenatorResult);
+            numeratorResult = numeratorResult % denomenatorResult;
+            break;
+          }
           break;
         }
       }

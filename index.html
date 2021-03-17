@@ -7,31 +7,39 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  
+
   <h1>Fraction Calculator</h1>
   <div class="grid-item">
-    <div id="first-group">
+    <div class="fraction">
       <input type="text" class="numerator" value="2" placeholder="num">
-      <h1>----</h1>
+      <div class="line"></div>
       <input type="text" class="denomenator" value="4" placeholder="denom">
     </div>
     <select id="operator">
       <option value="+">+</option>
-      <option value="-">-</option>
-      <option value="*">*</option>
-      <option value="/">/</option>
+      <option value="-"> -</option>
+      <option value="*">×</option>
+      <option value="/">÷</option>
     </select>
-    <div id="second-group">
+    <div class="fraction">
       <input type="text" class="numerator" value="3" placeholder="num">
-      <h1>----</h1>
+      <div class="line"></div>
       <input type="text" class="denomenator" value="6" placeholder="denom">
     </div>
     <button id="cal-btn">Calculate</button>
   </div>
-  <h1 id="result">Result: </h1>
-  <div id="fraction-figure">
+  <section id="result">
+    <h1 >Result: </h1>
+      <div class="fraction-result">
+        <input type="text" class="numerator">
+        <input type="text" class="wholeNumber" value="0">
+        <div class="line"></div>
+        <input type="text" class="denomenator" >
+      </div>
+    <div id="fraction-figure">
 
-  </div>
+    </div>
+  </section>
   <script src="app.js"></script>
 </body>
 </html>

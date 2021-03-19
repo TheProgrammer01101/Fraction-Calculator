@@ -73,7 +73,6 @@ section#result {
 #fraction-figure {
   margin: 1rem; 
   display: flex;
-  flex-wrap: wrap;
 } #fraction-figure .denom-box {
   background-color: transparent; 
   height: 50px;
@@ -84,6 +83,8 @@ section#result {
   width: 50px;
   border: 1px solid #333;
   background-color: #7868e6;
+} #fraction-figure .seperate {
+  margin-right: 1rem;
 }
 
 @media screen and (max-width: 748px) {

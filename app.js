@@ -8,20 +8,39 @@ let resultInputDenom = document.querySelector(".fraction-result .denomenator");
 let resultInputWholeNum = document.querySelector(".fraction-result .wholeNumber");
 let fractionFigure = document.querySelector("#fraction-figure");
 let denomenatorResult, numeratorResult, wholeNumResult;
+let box = document.querySelectorAll("#fraction-figure div");
+
 
 calculatorBtn.addEventListener('click', ()=> {
-  let box = document.querySelectorAll("#fraction-figure div");
+  box.forEach(element => {
+    element.parentNode.removeChild(element); // to reset the figure
+  });
+
   wholeNumResult = ""; /* to reset the whole number input value after having an improper fraction then a normal fraction */
-  for(x = 0; x < inputs.length; x++ ) {
-    if(inputs[x].value == "") {
-      alert("fill all the input");
-      return;
-    }
-    else if(isNaN(inputs[x].value)) {
-      alert("please input numbers");
-      return;
+
+  
+  if(inputDenom[0].value == 0 || inputDenom[1].value == 0){
+    alert("The value of the denominator cannot be 0");
+    return;
+  }
+  else if((inputNmr[0].value >= 100000 || inputNmr[1].value >= 100000) || 
+    (inputDenom[0].value >= 100000 || inputDenom[1].value >= 100000)) {
+    alert("Invalid input");
+    return;
+  }
+  else {
+    for(x = 0; x < inputs.length; x++ ) {
+      if(inputs[x].value == "") {
+        alert("Fill all the inputs");
+        return;
+      }
+      else if(isNaN(inputs[x].value)) {
+        alert("Input numbers");
+        return;
+      }
     }
   }
+  
 
     switch(operator.value) {
       case '+': 
@@ -65,52 +84,63 @@ calculatorBtn.addEventListener('click', ()=> {
       }
     }
     
-    box.forEach(element => {
-      element.parentNode.removeChild(element); // to reset the figure
-    });
-
-    let biggerNum = denomenatorResult;
-    let numerator = numeratorResult;
-
-    /* !improper fractions! */
-    if(wholeNumResult > 0) {
-      numerator = (denomenatorResult * wholeNumResult) + numeratorResult;
-      biggerNum = (denomenatorResult * wholeNumResult) + numeratorResult;
-      while(biggerNum % denomenatorResult) {
-        biggerNum++;
-      }
-      let denomMultiplier = 1;
-      for(x = 1; x <= biggerNum; x++) {
-        box = document.createElement("div");
-        fractionFigure.appendChild(box);
-        box.classList.add("denom-box");
-        if(x == denomenatorResult * denomMultiplier) {
-          box.classList.add("seperate");
-          denomMultiplier++;
-        }
-      }
-  
-      box = document.querySelectorAll("#fraction-figure div");
-      for(x = 0; x < numerator; x++) {
-        box[x].classList.add("numerator-box");
-      }
-      return;
+    if(wholeNumResult >= 1 && denomenatorResult * wholeNumResult <= 100) {
+      presentFraction();
+      console.log("object2");
     }
-    
 
-    /* !normal fractions! */
+    else if(numeratorResult <= 100 && denomenatorResult <= 100) {   
+      presentFraction();
+      console.log("object");
+    }
+     
+
+   
+  
+});
+
+function presentFraction() {
+  let biggerNum = denomenatorResult;
+  let numerator = numeratorResult;
+
+  /* !improper fractions! */
+  if(wholeNumResult > 0) {
+    numerator = (denomenatorResult * wholeNumResult) + numeratorResult;
+    biggerNum = (denomenatorResult * wholeNumResult) + numeratorResult;
+    while(biggerNum % denomenatorResult) {
+      biggerNum++;
+    }
+    let denomMultiplier = 1;
     for(x = 1; x <= biggerNum; x++) {
       box = document.createElement("div");
       fractionFigure.appendChild(box);
       box.classList.add("denom-box");
+      if(x == denomenatorResult * denomMultiplier) {
+        box.classList.add("seperate");
+        denomMultiplier++;
+      }
     }
 
     box = document.querySelectorAll("#fraction-figure div");
-    for(x = 0; x < numeratorResult; x++) {
+    for(x = 0; x < numerator; x++) {
       box[x].classList.add("numerator-box");
     }
+    return;
+  }
   
-});
+
+  /* !normal fractions! */
+  for(x = 1; x <= biggerNum; x++) {
+    box = document.createElement("div");
+    fractionFigure.appendChild(box);
+    box.classList.add("denom-box");
+  }
+
+  box = document.querySelectorAll("#fraction-figure div");
+  for(x = 0; x < numeratorResult; x++) {
+    box[x].classList.add("numerator-box");
+  }
+}
 
 function simplify() {
       let biggerNum = denomenatorResult;

@@ -12,10 +12,10 @@ let box = document.querySelectorAll("#fraction-figure div");
 
 
 calculatorBtn.addEventListener('click', ()=> {
-  box.forEach(element => {
-    element.parentNode.removeChild(element); // to reset the figure
-  });
-
+    box.forEach(element => {
+      element.remove();
+    });
+  
   wholeNumResult = ""; /* to reset the whole number input value after having an improper fraction then a normal fraction */
 
   
@@ -84,15 +84,14 @@ calculatorBtn.addEventListener('click', ()=> {
       }
     }
     
-    if(wholeNumResult >= 1 && denomenatorResult * wholeNumResult <= 100) {
-      presentFraction();
-      console.log("object2");
+    if(denomenatorResult * wholeNumResult <= 100) {
+      if (numeratorResult <= 100 && denomenatorResult <= 100) {   
+        presentFraction();
+        console.log("presented");
+      }
     }
 
-    else if(numeratorResult <= 100 && denomenatorResult <= 100) {   
-      presentFraction();
-      console.log("object");
-    }
+   
      
 
    

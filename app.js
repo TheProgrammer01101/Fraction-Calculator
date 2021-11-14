@@ -70,9 +70,11 @@ calculatorBtn.addEventListener('click', ()=> {
     if(numeratorResult == 0) {
       resultInputNmr.value = 0;
       resultInputDenom.value = "";
+      resultInputWholeNum.value = wholeNumResult;
     } else if(denomenatorResult == 1) {
       resultInputNmr.value = numeratorResult;
       resultInputDenom.value = "";
+      resultInputWholeNum.value = wholeNumResult;
     } else if(numeratorResult == denomenatorResult && resultInputWholeNum.value == "") {
       resultInputNmr.value = denomenatorResult;
       resultInputDenom.value = "";

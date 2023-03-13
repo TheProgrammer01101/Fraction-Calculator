@@ -18,27 +18,24 @@ calculatorBtn.addEventListener('click', ()=> {
   
   wholeNumResult = ""; /* to reset the whole number input value after having an improper fraction then a normal fraction */
 
-  
+  for(x = 0; x < inputs.length; x++ ) {
+    if(inputs[x].value == "") {
+      alert("Fill all the inputs");
+      return;
+    }
+    else if(isNaN(inputs[x].value)) {
+      alert("Input numbers");
+      return;
+    }
+  }
   if(inputDenom[0].value == 0 || inputDenom[1].value == 0){
     alert("The value of the denominator cannot be 0");
     return;
   }
   else if((inputNmr[0].value >= 100000 || inputNmr[1].value >= 100000) || 
     (inputDenom[0].value >= 100000 || inputDenom[1].value >= 100000)) {
-    alert("Invalid input");
+    alert("Input must be less than 100000");
     return;
-  }
-  else {
-    for(x = 0; x < inputs.length; x++ ) {
-      if(inputs[x].value == "") {
-        alert("Fill all the inputs");
-        return;
-      }
-      else if(isNaN(inputs[x].value)) {
-        alert("Input numbers");
-        return;
-      }
-    }
   }
   
 

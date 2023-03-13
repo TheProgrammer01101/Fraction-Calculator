@@ -53,6 +53,10 @@ h1 {
   margin: auto;
 }
 
+.fraction input {
+  width: 4rem;
+}
+
 section#result {
   margin: 5rem auto;
   text-align: center;
